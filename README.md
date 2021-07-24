@@ -4,4 +4,4 @@ A simple game of remembering the blocks
 
 ## Demo
 
-https://remember.shiv.ovh
+https://goigarg.github.io/Remember-Game/
