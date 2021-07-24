@@ -59,10 +59,10 @@ function checkAnswer(currentLevel) {
     else {
         startOver();
         $('h1').text('Wrong Answer');
-        $('h2').text('Press any Key to Start Again');
+        $('h2').html('Press any Key to Start Game <br>Max Score ' + Math.max(...score));
+        
         btnSound('wrong');
-        var maxScore = Math.max(...score);
-        $('h2').text('Max Score ' + maxScore);
+
     }
     
 }
