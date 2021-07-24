@@ -14,20 +14,24 @@ var level = 0;
 
 $(document).keypress(function() {
     if (!started) {
+        $('h2').text('');
         nextLevel();
         started = true;
     }
 });
 
 
-//button press
+//Button press
 
-$('button').on('click', function () {
+$('.box').on('click', function () {
 
-    //game will not start if user has not pressed the keyboard button
+    //game will not start if user has not pressed the keyboard key
     
     if (gamePattern.length === 0) {
-        $('h1').text('First Press any Keyboard Key to Start The Game');
+        $('h1').text('Oops');
+        $('h2').text('First Press any Keyboard Key to Start The Game');
+        startOver();
+        btnSound('wrong');
     }
     else {
         var userChoosenColor = this.id;
@@ -35,10 +39,9 @@ $('button').on('click', function () {
         btnSound(userChoosenColor);
         btnPress(userChoosenColor);
     
-        console.log(userChoosenColor);
+
         userPattern.push(userChoosenColor);
-        userChoosenColor = '';
-            
+
         checkAnswer(userPattern.length-1);
     
     }
@@ -53,17 +56,12 @@ function checkAnswer(currentLevel) {
     if (userPattern[currentLevel] == gamePattern[currentLevel]) {
         if(userPattern.length == gamePattern.length) {
             nextLevel();
-            console.log('win');
         }
     }
     else {
-        console.log('fail');
-        $('h1').text('Wrong Answer Press any Key to Start Again');
-        $('body').addClass('fail');
-        setTimeout(function () {
-            $('body').removeClass('fail');
-        },200);
         startOver();
+        $('h1').text('Wrong Answer');
+        $('h2').text('Press any Key to Start Again');
         btnSound('wrong');
     }
     
@@ -79,10 +77,11 @@ function nextLevel() {
     var randomNumber = Math.floor(Math.random()*4);
     var randomColor = btnColors[randomNumber];
     gamePattern.push(randomColor);
-    console.log(gamePattern);
+
 
     setTimeout(function () {
     $("#" + randomColor).fadeIn(300).fadeOut(200).fadeIn(200);
+    btnSound(randomColor)
     },500);
 
 
@@ -112,4 +111,10 @@ function startOver(){
     gamePattern = [];
     userPattern = [];
     started = false;
+    
+   
+    $('body').addClass('fail');
+    setTimeout(function () {
+        $('body').removeClass('fail');
+    },200);
 }
