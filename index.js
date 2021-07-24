@@ -10,14 +10,33 @@ var level = 0;
  
 var score = [];
 
+var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
 //keypress to start game
-$(document).keypress(function() {
-    if (!started) {
-        $('h2').text('');
-        nextLevel();
-        started = true;
-    }
-});
+
+if (isMobile) { 
+    $('h1').click(function(){
+        if (!started) {
+            $('h2').text('');
+            nextLevel();
+            started = true;
+        }
+    });
+ }
+ else {
+    $(document).keypress(function() {
+        if (!started) {
+            $('h2').text('');
+            nextLevel();
+            started = true;
+        }
+    });
+ }
+
+
+
+
+
 
 
 //Button press
