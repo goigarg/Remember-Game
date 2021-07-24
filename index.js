@@ -7,11 +7,10 @@ var userPattern = [];
 
 var started = false;
 var level = 0;
+ 
+var score = [];
 
 //keypress to start game
-
-
-
 $(document).keypress(function() {
     if (!started) {
         $('h2').text('');
@@ -39,7 +38,6 @@ $('.box').on('click', function () {
         btnSound(userChoosenColor);
         btnPress(userChoosenColor);
     
-
         userPattern.push(userChoosenColor);
 
         checkAnswer(userPattern.length-1);
@@ -63,6 +61,8 @@ function checkAnswer(currentLevel) {
         $('h1').text('Wrong Answer');
         $('h2').text('Press any Key to Start Again');
         btnSound('wrong');
+        var maxScore = Math.max(...score);
+        $('h2').text('Max Score ' + maxScore);
     }
     
 }
@@ -71,6 +71,8 @@ function checkAnswer(currentLevel) {
 
 // Next level 
 function nextLevel() {
+
+    score.push(level);
     userPattern = [];
     level++;
     $('h1').text('Level ' + level);
@@ -112,7 +114,7 @@ function startOver(){
     userPattern = [];
     started = false;
     
-   
+
     $('body').addClass('fail');
     setTimeout(function () {
         $('body').removeClass('fail');
