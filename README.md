@@ -1,6 +1,6 @@
 # Remember-Game
  
-a simple game of remembering the blocks 
+A simple game of remembering the blocks 
 
 ## Demo
 
