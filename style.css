@@ -20,7 +20,6 @@ h2 {
 }
 
 .container {
-
     margin: 50px;
 
 }
@@ -58,6 +57,11 @@ footer {
     font-size: 1.2rem;
     margin: 40px;
 }
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .fail {
     background-color: red;
 }
