@@ -1,6 +1,6 @@
 
 //game logic
-var btnColors = ['green', 'red', 'gold', 'blue']
+const btnColors = ['green', 'red', 'gold', 'blue']
 
 var gamePattern = [];
 var userPattern = [];
@@ -59,7 +59,8 @@ function checkAnswer(currentLevel) {
     else {
         startOver();
         $('h1').text('Wrong Answer');
-        $('h2').html('Press any Key to Start Game <br>Max Score ' + Math.max(...score));
+        var maxScore = Math.max(...score) + 1;
+        $('h2').html('Press any Key to Start Game <br>Max Score ' + maxScore);
         
         btnSound('wrong');
 
